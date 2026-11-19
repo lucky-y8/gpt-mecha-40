@@ -1,0 +1,63 @@
+{
+  "schema_version": 1,
+  "reference": {
+    "mechanical_repository": "https://github.com/apirrone/Open_Duck_Mini",
+    "mechanical_commit": "b23317a485b3cec7d8417f352478778b3475173c",
+    "runtime_repository": "https://github.com/apirrone/Open_Duck_Mini_Runtime",
+    "runtime_commit": "376de65435c93486347cd601a31aa96951799896",
+    "simulation_repository": "https://github.com/apirrone/Open_Duck_Playground",
+    "simulation_commit": "b9be205ac64488c23504ca42e5ec790337adeec3"
+  },
+  "expected_actuator_count": 14,
+  "expected_gait_action_count": 10,
+  "runtime_motor_ids": {
+    "left_hip_yaw": 20,
+    "left_hip_roll": 21,
+    "left_hip_pitch": 22,
+    "left_knee": 23,
+    "left_ankle": 24,
+    "neck_pitch": 30,
+    "head_pitch": 31,
+    "head_yaw": 32,
+    "head_roll": 33,
+    "right_hip_yaw": 10,
+    "right_hip_roll": 11,
+    "right_hip_pitch": 12,
+    "right_knee": 13,
+    "right_ankle": 14
+  },
+  "gait_policy_joint_order": [
+    "left_hip_yaw",
+    "left_hip_roll",
+    "left_hip_pitch",
+    "left_knee",
+    "left_ankle",
+    "right_hip_yaw",
+    "right_hip_roll",
+    "right_hip_pitch",
+    "right_knee",
+    "right_ankle"
+  ],
+  "simulated_joint_limits_deg": {
+    "left_hip_yaw": [-30.0, 30.0],
+    "left_hip_roll": [-25.0, 25.0],
+    "left_hip_pitch": [-70.0, 30.0],
+    "left_knee": [-90.0, 90.0],
+    "left_ankle": [-90.0, 90.0],
+    "neck_pitch": [-20.0, 65.0],
+    "head_pitch": [-45.0, 45.0],
+    "head_yaw": [-160.0, 160.0],
+    "head_roll": [-30.0, 30.0],
+    "right_hip_yaw": [-30.0, 30.0],
+    "right_hip_roll": [-25.0, 25.0],
+    "right_hip_pitch": [-30.0, 70.0],
+    "right_knee": [-90.0, 90.0],
+    "right_ankle": [-90.0, 90.0]
+  },
+  "notes": [
+    "Motor IDs and runtime order are taken from the pinned Open Duck Mini Runtime v2 hardware interface.",
+    "The gait policy action order contains only the ten leg joints; head and neck actuators are excluded.",
+    "The ranges are MuJoCo reference model limits, not certified physical travel or safe firmware limits.",
+    "Reconcile this map against the exact CAD, servo IDs, physical offsets and runtime commit before energizing hardware."
+  ]
+}
