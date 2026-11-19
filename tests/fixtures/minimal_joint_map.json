@@ -1,0 +1,7 @@
+{
+  "expected_actuator_count": 1,
+  "expected_gait_action_count": 1,
+  "runtime_motor_ids": {"left_hip_yaw": 20},
+  "gait_policy_joint_order": ["left_hip_yaw"],
+  "simulated_joint_limits_deg": {"left_hip_yaw": [-30.0, 30.0]}
+}
