@@ -1,0 +1,24 @@
+category,item,quantity,author_reference_price_eur,status,verification_notes
+power,18650 cell,2,10.00,reference only,Confirm exact cell model and matching pair
+power,18650 cell holder,1,4.99,reference only,Confirm 2S series wiring and mechanical fit
+power,2S BMS,1,8.40,reference only,Confirm current rating and cell chemistry
+power,5V regulator / UBEC,1,4.00,reference only,Confirm continuous and peak current for compute rail
+power,small power switch,1,4.49,reference only,Confirm DC rating and emergency-stop architecture
+power,USB-C charger,1,9.99,reference only,Must match exact 2S pack and BMS charging topology
+power,2.1mm barrel jack,2,2.00,reference only,Confirm connector current rating and polarity
+power,XT30 connector pair,1,8.00,reference only,Confirm wire gauge and polarity
+sensing,BNO055 IMU,1,40.00,reference only,Confirm breakout pinout and mounting orientation
+compute,Raspberry Pi Zero 2 W,1,26.08,reference only,Upstream locomotion host baseline
+storage,microSD card,1,10.00,reference only,32GB card cited in runtime install guide
+servo control,Waveshare servo control board,1,5.00,reference only,Confirm exact Bus Servo Adapter revision and connector pinout
+actuation,Feetech STS3215 7.4V,14,196.00,reference only,Exact suffix and voltage range must be confirmed from matching datasheet
+foot sensing,SS-10 foot contact switch,4,4.00,reference only,Confirm mounting and left/right signal wiring
+accessory actuation,9g micro servo,2,6.66,reference only,Optional antenna/expression feature
+mechanical,3D-printing M3 heat-set inserts,1,5.99,reference only,Pack quantity not equal to required insert count
+printing,PLA filament approximately 500g,1,20.00,reference only,Original print guide uses PLA 15% infill for listed parts
+printing,TPU foot-bottom filament,part of print material,not separately priced,reference only,Original print guide uses TPU 40% infill for foot pads
+wiring,cable sheath,1,9.00,reference only,Confirm length and internal clearance
+wiring,15cm micro-USB to USB-C cable,1,7.00,reference only,Confirm connector orientation and fit
+wiring,50cm micro-USB to USB-C cable,1,6.00,reference only,Confirm connector orientation and fit
+mechanical,bearing,3,10.50,reference only,Exact size must be verified from CAD
+,AUTHOR BOM CORE TOTAL,,398.10,reference only,Historical author BOM reference; not a live quotation
