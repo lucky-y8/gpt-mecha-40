@@ -1,0 +1,14 @@
+<mujoco model="fixture">
+  <worldbody>
+    <body name="trunk">
+      <inertial mass="1.25" pos="0 0 0" diaginertia="1 1 1" />
+      <joint name="left_hip_yaw" type="hinge" range="-0.5235987756 0.5235987756" />
+    </body>
+  </worldbody>
+  <actuator>
+    <position name="left_hip_yaw" joint="left_hip_yaw" />
+  </actuator>
+  <sensor>
+    <gyro name="gyro" site="imu" />
+  </sensor>
+</mujoco>
