@@ -16,7 +16,7 @@ This project references, but does not claim authorship of, the following upstrea
 - Reference branch: v2
 - Audited commit: 376de65435c93486347cd601a31aa96951799896
 - Role: embedded runtime and actuator/policy execution reference.
-- License: verify the exact license file and notices at the pinned revision before copying or modifying source files.
+- License status: no root LICENSE/COPYING/NOTICE file was present in the inspected v2 repository tree. Do not copy or modify its source files into this repository until the authors' licensing terms are confirmed. Linking to the upstream repository is fine.
 
 ## Open Duck Playground
 
@@ -24,7 +24,15 @@ This project references, but does not claim authorship of, the following upstrea
 - Reference branch: main
 - Audited commit: b9be205ac64488c23504ca42e5ec790337adeec3
 - Role: MuJoCo simulation and policy training reference.
-- License: verify the exact license file and notices at the pinned revision before copying or modifying source files.
+- License status: no root LICENSE file was present in the inspected main tree. Some source files contain Apache-2.0 headers, but verify each file and asset before copying. Do not assume the entire repository or its binary assets share one license.
+
+## Community armor-cover reference
+
+- Source: Open Duck Mini V2, `print/mods/v2_Jaimes_Mods`
+- Author: Jaime Machuca (jmachuca77)
+- Purpose: alternative body and leg covers, cable guides and emergency-stop panel.
+- Attribution: the mod README asks users to retain attribution and notes that the covers alter mass distribution and may reduce stability with the existing RL policy.
+- This mod is a reference only. It is not the GPT-Mecha original light-knight armor design.
 
 ## Attribution rules
 
