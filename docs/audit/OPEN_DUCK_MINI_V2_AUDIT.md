@@ -80,7 +80,7 @@ The runtime `checklist.md` is also marked TODO and lists joint positions/offsets
 
 The runtime setup guide says the prebuilt image is currently confirmed on Raspberry Pi Zero 2 W, and requires motor configuration, IMU calibration, Bluetooth pairing where used, and a per-build `duck_config.json` before operation.
 
-## 7. Power-system audit and voltage gate
+## 7. Power-system audit — important voltage conflict
 
 The upstream V2 wiring diagram labels:
 - two 18650 cells in series,
@@ -89,11 +89,25 @@ The upstream V2 wiring diagram labels:
 - a UBEC / 5V output for the Raspberry Pi,
 - a 7.4V supply path to the motor controller.
 
-The upstream parts list identifies 14 Feetech STS3215 7.4V servos. However, STS3215 datasheets and product revisions can differ in their specified input-voltage range. A 2S lithium-ion pack is approximately 7.4V nominal and 8.4V when fully charged.
+The FEETECH manufacturer documentation for **ST-3215-C001** specifies:
+- rated input range: **4.0–7.4V**;
+- 7.4V stall torque: **19.5 kg·cm**;
+- 7.4V rated torque: **5 kg·cm**;
+- rated current: **650mA**;
+- stall current: **2.5A**;
+- over-voltage protection above 7.4V is described in the older product specification.
 
-**Procurement gate:** obtain the exact servo suffix/model and its matching manufacturer datasheet from the supplier. Confirm whether that exact unit tolerates the maximum voltage of the proposed battery pack. If not, design a correctly rated regulated servo rail. Do not infer that every product labelled “STS3215 7.4V” has the same voltage limits.
+A 2S lithium-ion pack is nominally 7.2–7.4V but reaches **8.4V when fully charged**. A BMS protects cells; it does not regulate the output down to 7.4V.
 
-The power design must include battery protection, correctly rated wiring/connectors, fusing, separate regulated compute power, voltage/current monitoring and a physical actuator-power emergency stop. Battery assembly and charging must follow the exact cell/BMS/charger specifications; do not improvise a lithium pack.
+**This is a real compatibility conflict to resolve before powering the servos:** do not assume that the upstream 2S wiring diagram can be copied literally with STS3215-C001. Obtain written confirmation from FEETECH for the exact servo revision, or design a properly rated regulated servo rail that stays within the selected servo's input range across the entire battery discharge cycle.
+
+Power design must include battery protection, correctly rated wiring/connectors, fusing, separate regulated compute power, voltage/current monitoring and a physical actuator-power emergency stop. The 14-servo stall-current sum is 35A (14 × 2.5A), a fault/design bound rather than normal continuous draw. Measure real load profiles before sizing the regulator, BMS, fuse, wires and connectors. A 5V UBEC is for the compute rail, not the servo rail.
+
+Battery assembly and charging must follow the exact cell/BMS/charger specifications; do not improvise a lithium pack.
+
+References:
+- [FEETECH 2024 brochure](https://www.feetech.cn/Data/feetechrc/upload/file/20240706/2024%E9%A3%9E%E7%89%B9%E5%AE%A3%E4%BC%A0%E5%86%8C.pdf)
+- [FEETECH STS3215-C001 datasheet](https://files.seeedstudio.com/products/Feetech/108090023_STS3215-C001_Datasheet.pdf)
 
 ## 8. Existing armor-cover reference
 
@@ -121,10 +135,13 @@ Completed:
 - Counted the upstream print package.
 - Identified major assembly, power, documentation and license gaps.
 - Found an existing community body-cover mod and its stability warning.
+- Found low-cost China-side servo/adapter candidates, but exact SKU compatibility is still unverified.
+- Identified the 2S battery / 7.4V servo maximum-voltage conflict.
 
 Still required before bulk procurement:
 - Export and inspect the exact Onshape CAD revision.
 - Verify servo SKU, voltage range, connectors and supplier datasheet.
+- Confirm a regulated servo power solution and current ratings.
 - Reconcile every BOM item against the CAD and assembly steps.
 - Confirm servo controller revision and bus wiring.
 - Measure/estimate the baseline physical mass and center of mass.
